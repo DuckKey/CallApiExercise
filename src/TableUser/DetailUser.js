@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
 
 const layout = {
     labelCol: {
@@ -37,7 +37,11 @@ const DetailUser = () => {
         })
       }
       catch (error) {
-        console.log("Error")
+        notification.error({
+        message: 'Error',
+        description:
+          'Error',
+      });
       }
     }
   return (

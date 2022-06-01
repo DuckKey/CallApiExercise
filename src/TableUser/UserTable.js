@@ -1,4 +1,4 @@
-import { Button, Table, Popconfirm } from 'antd'
+import { Button, Table, Popconfirm, Alert,notification } from 'antd'
 import axios from 'axios'
 import React, { useState,useEffect } from 'react'
 import { Link } from "react-router-dom";
@@ -19,7 +19,11 @@ const UserTable = () => {
       setLoading(false)
     }
     catch (error) {
-      console.log("Error")
+      notification.error({
+        message: 'Error',
+        description:
+          'Error',
+      });
     }
   }
 

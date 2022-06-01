@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
 
 const layout = {
     labelCol: {
@@ -20,7 +20,11 @@ const CreateUser = () => {
           navigate("/UserTable")
         }
         catch (error) {
-          console.log("Error")
+          notification.error({
+          message: 'Error',
+          description:
+            'Error',
+          });
         }
       }
   return (
