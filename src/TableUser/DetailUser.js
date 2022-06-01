@@ -14,23 +14,20 @@ const layout = {
   };
 
 const DetailUser = () => {
-    const [dataGrid, setDataGrid] = useState([])
-    const [loading, setLoading] = useState("")
     const [form] = Form.useForm()
     const {id} = useParams()
     const navigate = useNavigate()
-    const onFinish = (values) => {
-          axios.patch(`http://localhost:3000/users/${id}`, values)
+    const onFinish = async (values) => {
+          await axios.patch(`http://localhost:3000/users/${id}`, values)
           navigate("/UserTable")
         }
     useEffect(() => {
-        LoadDatas()
+        loadDatas()
       },[])
 
-    const LoadDatas = async() => {
-        setLoading(true)
+    const loadDatas = async() => {
+      try {
         const response = await axios(`http://localhost:3000/users/${id}`)
-        setDataGrid(response.data)
         form.setFieldsValue({
             name:response.data.name,
             username:response.data.username,
@@ -38,7 +35,10 @@ const DetailUser = () => {
             phone:response.data.phone,
             website:response.data.website
         })
-        setLoading(false)
+      }
+      catch (error) {
+        console.log("Error")
+      }
     }
   return (
     <Form form={form} {...layout} name="nest-messages" onFinish={onFinish} >

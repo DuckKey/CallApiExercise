@@ -8,14 +8,19 @@ const UserTable = () => {
   const [loading, setLoading] = useState("")
 
   useEffect(() => {
-    LoadDatas()
+    loadDatas()
   },[])
 
-  const LoadDatas = async() => {
-    setLoading(true)
-    const response = await axios("http://localhost:3000/users")
-    setDataGird(response.data)
-    setLoading(false)
+  const loadDatas = async() => {
+    try {
+      setLoading(true)
+      const response = await axios("http://localhost:3000/users")
+      setDataGird(response.data)
+      setLoading(false)
+    }
+    catch (error) {
+      console.log("Error")
+    }
   }
 
   const DataWithAge = dataGrid.map((item) =>({

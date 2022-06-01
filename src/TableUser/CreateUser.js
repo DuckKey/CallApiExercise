@@ -14,9 +14,14 @@ const layout = {
 
 const CreateUser = () => {
     const navigate = useNavigate()
-    const onFinish = (values) => {
-        axios.post(`http://localhost:3000/users/`, values)
-        navigate("/UserTable")
+    const onFinish = async (values) => {
+        try {
+          await axios.post(`http://localhost:3000/users/`, values)
+          navigate("/UserTable")
+        }
+        catch (error) {
+          console.log("Error")
+        }
       }
   return (
     <Form {...layout} name="nest-messages" onFinish={onFinish} >

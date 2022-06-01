@@ -11,7 +11,8 @@ function App() {
         <NavLink
         style={({isActive}) => {return {color: isActive ? 'Red' : ''}}}
         className='nav-bar' to='./CreateUser'>CreateUser</NavLink>
-    </nav><Outlet />
+    </nav>
+    <Outlet />
     </div>
   );
 }
